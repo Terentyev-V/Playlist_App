@@ -1,0 +1,28 @@
+.div {
+    background-color: transparent;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    color: #F8F8FF;
+    text-align: center;
+    height: 30vw;
+    width: 35%;
+    font-size: 20px;
+    border: 1px solid #F8F8FF;
+    border-radius: 10px;
+}
+
+
+h2 {
+    text-align: center;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    left: 25%;
+    bottom: 0;
+    width: 50%;
+    height: 3px; /* Thickness of the underline */
+    background: linear-gradient(to left, hsl(206, 75%, 49%), hsl(331, 90%, 56%));
+}

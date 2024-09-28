@@ -1,0 +1,33 @@
+.form {
+    display: grid;
+    justify-content: center;
+    
+    gap: 10px;
+  }
+
+.input {
+    text-align: center;
+    height: 3vw;
+    width: 20vw;
+    font-size: 20px;
+    border: 1px solid #F8F8FF;
+    border-radius: 10px;
+    background-color: transparent;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    color: #F8F8FF;
+}
+.button1 {
+    width: 8vw;
+    height: 3vw;
+    font-weight: 700;
+    place-self: center;
+    border-radius: 20px;
+    background-color: #2f0218;
+    border: none;
+    color: #F8F8FF;
+}
+
+.button1:active {
+    background-color: #97084d;
+}

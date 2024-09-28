@@ -1,0 +1,36 @@
+.roboto{
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.div {
+  display: flex;              
+  justify-content: space-evenly;             
+  padding: 20px; 
+
+}
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'roboto', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: url('../pics/cccoil.svg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-color: black;
+  color: #F8F8FF;
+}
+
+.h1 {
+  text-align: center;
+  font-size: 3rem;
+}
+
+
+
+

@@ -1,0 +1,66 @@
+.div {
+    background-color: transparent;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    color: #F8F8FF;
+    text-align: center;
+    height: 30vw;
+    width: 35%;
+    font-size: 20px;
+    border: 1px solid #F8F8FF;
+    border-radius: 10px;
+}
+
+
+h2 {
+    text-align: center;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    left: 25%;
+    bottom: 0;
+    width: 50%;
+    height: 3px; /* Thickness of the underline */
+    background: linear-gradient(to left, hsl(206, 75%, 49%), hsl(331, 90%, 56%));
+}
+
+
+
+
+
+.button {
+    width: 10vw;
+    height: 3vw;
+    font-weight: 700;
+    place-self: center;
+    border-radius: 20px;
+    background-color: #97084d;
+    border: none;
+    color: #F8F8FF;
+    transition: transform 0.5s ease-in-out;
+}
+
+.button:hover {
+    transform: scale(1.2);
+     /* Scale the button to 1.5 times its original size */
+}
+.button:active {
+    transform: scale(0.5);
+     /* Scale the button to 1.5 times its original size */
+}
+
+.input {
+    margin: 24.9px 0px;
+    text-align: center;
+    
+    background: none;
+    border: none;
+    color: #F8F8FF;
+    text-align: center;
+    font-size: 30px;
+    border-radius: 5px;
+}
+
