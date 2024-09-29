@@ -1,46 +1,70 @@
 import React, { useState } from 'react';
 import Tracklist from './Tracklist';
 import styles from './Playlist.module.css';
+import Spotify from './Spotify';
 
-function Playlist({ name, tracks, onRemove, onNameChange }) {
-  const [playlistName, setPlaylistName] = useState(name); // Local state for the playlist name
-  const [isEditing, setIsEditing] = useState(false); // State to toggle editing mode
+function Playlist({ name, tracks, onRemove, onNameChange, onReset }) {
+  const [playlistName, setPlaylistName] = useState(name);
+  const [isEditing, setIsEditing] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
 
-  // Handle playlist name input change
   const handleNameChange = (e) => {
-    setPlaylistName(e.target.value); // Update the local state as user types
+    setPlaylistName(e.target.value);
   };
 
-  // Handle finishing editing (onBlur or Enter key)
   const handleBlur = () => {
-    setIsEditing(false); // Exit editing mode
+    setIsEditing(false); // Exit edit mode
     onNameChange(playlistName); // Call parent function to update the playlist name
   };
 
-  // Handle Enter key press
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
-      handleBlur(); // Save when Enter is pressed
+      handleBlur(); // Save name and exit edit mode when "Enter" is pressed
     }
+  };
+
+  // Collect track URIs from the current playlist
+  const trackUris = tracks.map(track => track.uri);
+
+  // Handle saving the playlist to Spotify
+  const savePlaylist = () => {
+    if (!playlistName || trackUris.length === 0) {
+      alert('Please provide a valid name and add tracks to the playlist.');
+      return;
+    }
+
+    setIsLoading(true); // Show loading indicator
+    Spotify.savePlaylist(playlistName, trackUris).then(() => {
+      setIsLoading(false); // Stop loading
+      setIsSaved(true); // Show confirmation message
+      setPlaylistName('BlackT Playlist'); // Reset playlist name
+      onReset(); // Reset the playlist tracks
+    });
   };
 
   return (
     <div className={styles.div}>
-      {isEditing ? (
+      {isEditing ? ( 
         <input
           className={styles.input}
           value={playlistName}
           onChange={handleNameChange}
-          onBlur={handleBlur}
-          onKeyDown={handleKeyDown}
+          onBlur={handleBlur}  // When input loses focus, switch back to h2
+          onKeyDown={handleKeyDown}  // Switch back to h2 when Enter is pressed
           autoFocus
         />
       ) : (
-        <h2 onClick={() => setIsEditing(true)}>{playlistName}</h2>
+        <h2 onClick={() => setIsEditing(true)}>{playlistName}</h2>  // Switch to input on click
       )}
 
       <Tracklist tracks={tracks} onAction={onRemove} actionLabel="➖" />
-      <button className={styles.button}>SAVE TO SHOPIFY</button>
+
+      <button onClick={savePlaylist} className={styles.button} disabled={isLoading}>
+        {isLoading ? 'Saving...' : 'SAVE TO SPOTIFY'}
+      </button>
+
+      {isSaved && <p className={styles.confirmation}>Playlist saved successfully!</p>}
     </div>
   );
 }

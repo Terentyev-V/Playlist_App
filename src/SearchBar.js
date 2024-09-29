@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import styles from './SearchBar.module.css'
+import styles from './SearchBar.module.css';
 
 function SearchBar({ onSearch }) {
   const [searchTerm, setSearchTerm] = useState('');
 
+  const handleInputChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSearch(searchTerm); // Pass search term to parent component
+    onSearch(searchTerm); // Trigger the search with the entered term
   };
 
   return (
@@ -14,9 +18,9 @@ function SearchBar({ onSearch }) {
       <input
       className={styles.input}
         type="text"
-        placeholder="Enter a song name"
+        placeholder="Song / Artist"
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={handleInputChange}
       />
       <button className={styles.button1} type="submit">SEARCH</button>
     </form>

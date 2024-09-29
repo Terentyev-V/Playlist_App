@@ -4,7 +4,8 @@
     backdrop-filter: blur(10px);
     color: #F8F8FF;
     text-align: center;
-    height: 30vw;
+    height: fit-content;
+    min-height: 30vw;
     width: 35%;
     font-size: 20px;
     border: 1px solid #F8F8FF;
