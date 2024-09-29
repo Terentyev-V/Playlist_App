@@ -1,5 +1,5 @@
 const clientId = 'f82e090e4f6b427993467bd26c22769c'; 
-const redirectUri = 'http://localhost:3001/Playlist_App'; 
+const redirectUri = 'https://terentyev-v.github.io/Playlist_App/'; 
 let accessToken;
 let expiresIn;
 
